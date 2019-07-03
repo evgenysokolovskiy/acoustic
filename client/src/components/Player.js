@@ -8,7 +8,7 @@ import {
     Scrabber,
     Progress,
     Timeline
-} from '../styles/styled'
+} from '../styles/screen2/'
 
 export default class Player extends React.Component {
     constructor(props) {

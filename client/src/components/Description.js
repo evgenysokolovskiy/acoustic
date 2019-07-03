@@ -5,7 +5,7 @@ import {
     DescriptionArticle,
     DescriptionImage,
     DescriptionText
-} from '../styles/styled'
+} from '../styles/screen3/'
 
 export const Description = () => {
     const albums = Object.keys(configAlbum)

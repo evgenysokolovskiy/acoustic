@@ -7,7 +7,7 @@ import {
     Navbar,
     NavbarLink,
     Copyright
-} from '../styles/styled'
+} from '../styles/screen1/'
 //import { colorScheme } from '../styles/colorScheme'
 
 export default class Header extends React.Component {

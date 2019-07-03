@@ -1,4 +1,4 @@
-/* Получить длину композиций */
+/* Получить длительность композиций */
 const fs = require('fs')
 const path = require('path')
 const mm = require('music-metadata')

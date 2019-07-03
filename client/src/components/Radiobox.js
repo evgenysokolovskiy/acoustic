@@ -10,7 +10,7 @@ import {
     RadioboxWrapText,
     RadioboxTitle,
     RadioboxTitleText
-} from '../styles/radioboxStyles'
+} from '../styles/screen4/'
 
 export default class Radiobox extends React.Component {
     constructor(props) {

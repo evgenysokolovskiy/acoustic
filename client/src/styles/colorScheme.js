@@ -1,60 +1,75 @@
 // Цветовая схема сайта
+
+const colors = {
+    // Основные цвета
+    absoluteWhite: '#FFF', // Подкладка для заметок
+    white: '#f6f6f7', // Светлый фон
+    dark: '#2c2c2c', // Тёмный фон
+    middle: '#555', // Заголовки на светлом фоне
+    contrast: '#cc725c', // Контрастный цвет (шкала плеера, яркие заголовки)
+
+    // Дополнительные цвета
+    black: '#030303', // Футер, фон плеера для радио
+    hover: '#aaa', // При наведении на ссылку
+    copyright: '#5e606c' // Для копирайта
+}
+
 export const colorScheme = {
     /* SCREEN #1 */
 
     // RadioIcon
-    radioIcon: '#ece2d4',
-    radioIconHover: '#aaa',
+    radioIcon: colors.white,
+    radioIconHover: colors.hover,
     // Title
-    title: '#f6f6f7',
-    titleText: '#cc725c',
+    title: colors.white,
+    titleText: colors.contrast,
     // Menu
-    navbarLink: '#f6f6f7',
-    navbarLinkHover: '#aaa',
+    navbarLink: colors.white,
+    navbarLinkHover: colors.hover,
     navbarLinkPress: 'red',
     // Copyright
-    copyright: '#5e606c',
+    copyright: colors.copyright,
 
     /* SCREEN #2 */
 
     // Наименование альбома
-    posterNameAlbum: '#555',
+    posterNameAlbum: colors.middle,
     // Исполнитель
-    posterArtist: '#cc725c',
+    posterArtist: colors.contrast,
     // Шкала под постером
-    scrabberPoster: '#5a5a5a',
+    scrabberPoster: colors.middle,
     // Прогресс шкалы под постером
-    progressPoster: '#cc725c',
+    progressPoster: colors.contrast,
     // Плеер
     playerWrap: 'linear-gradient(to top, #444 0%, #555 50%, #444 51%, #444 100%)',
     // Иконка воспроизведения
-    playIcon: '#f6f6f7',
+    playIcon: colors.white,
     // Шкала проигрывания
-    scrabber: '#f6f6f7',
+    scrabber: colors.white,
     // Прогресс
-    progress: '#cc725c',
+    progress: colors.contrast,
     // Таймлайн
-    timeline: '#f6f6f7',
+    timeline: colors.white,
 
     /* SCREEN №3 */
     // Фон заметок description
-    descriptionArticle: '#FFF',
+    descriptionArticle: colors.absoluteWhite,
 
     /* SCREEN №4 */
     // Фон для радиоплеера
-    radioboxWrap: '#2c2c2c',
+    radioboxWrap: colors.dark,
     // Фон для панели с кнопками
-    radioboxButtons: '#030303',
+    radioboxButtons: colors.black,
     // Кнопки
-    radioboxButtonsColor: '#FFF',
+    radioboxButtonsColor: colors.absoluteWhite,
     // Название радиостанции
-    radioboxTitle: '#cc725c',
+    radioboxTitle: colors.contrast,
     // Описание радиостанции
-    radioboxTitleText: '#ccc',
+    radioboxTitleText: colors.white,
 
     /* FOOTER */
     // Фон футера
-    footerWrap: '#030303',
+    footerWrap: colors.black,
     // Цвет текста футера
-    footerWrapColor: '#5e606c'
+    footerWrapColor: colors.copyright
 }

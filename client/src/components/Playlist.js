@@ -1,5 +1,5 @@
 import React from 'react'
-import { PlaylistWrap } from '../styles/styled'
+import { PlaylistWrap } from '../styles/screen2/'
 
 export default class Playlist extends React.Component {
     constructor(props) {

@@ -10,7 +10,7 @@ import {
     PosterMetadata,
     ScrabberPoster,
     ProgressPoster
-} from '../styles/styled'
+} from '../styles/screen2/'
 
 export default class Poster extends React.Component {
     constructor(props) {

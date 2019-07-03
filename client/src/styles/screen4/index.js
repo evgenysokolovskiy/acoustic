@@ -1,14 +1,16 @@
+/* SCREEN №4 */
+
 import styled from 'styled-components'
-import { device } from '../device'
+import { device } from '../../device/'
 import 'material-icons'
-import { colorScheme } from './colorScheme'
+import { colorScheme } from '../colorScheme'
 
 export const RadioboxWrap = styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
     background-color: ${colorScheme.radioboxWrap};
 
     @media ${device.mobileL} {
@@ -61,4 +63,22 @@ export const RadioboxTitle = styled.h4`
 export const RadioboxTitleText = styled.p`
     color: ${colorScheme.radioboxTitleText};
     font-size: 1.2em;
+`
+/* Footer */
+export const FooterWrap = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 10vh;
+    background-color: ${colorScheme.footerWrap};
+    font-family: 'Material Icons';
+    color: ${colorScheme.footerWrapColor};
+    font-size: 1rem;
+
+    &:after {
+        padding-left: 5px;
+        font-family: 'Source Sans Pro', sans-serif;
+        content: 'Лето Наших Надежд", 2019';
+    }
 `

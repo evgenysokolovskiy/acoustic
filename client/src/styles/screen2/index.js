@@ -1,87 +1,9 @@
-import styled from 'styled-components'
-import { device } from '../device/'
-import 'typeface-roboto-multilang'
-import 'material-icons'
-import { colorScheme } from './colorScheme'
-import { poster } from '../api/images'
-
-/* SCREEN №1 */
-
-// Header - 100vh
-export const HeaderWrap = styled.div`
-    height: 100vh;
-    position: relative;
-    padding-top: 40vh;
-    background: url(${poster}) 100% 100% no-repeat;
-    background-size: cover;
-    text-align: center;
-`
-export const RadioIcon = styled.div`
-    position: absolute;
-    top: 4%;
-    right: 4%;
-    font-family: 'Material Icons';
-    cursor: pointer;
-    color: ${colorScheme.radioIcon};
-    font-size: 1.6rem;
-
-    &:hover {
-        color: ${colorScheme.radioIconHover};
-    }
-`
-export const Title = styled.h2`
-    font-size: 1.8rem;
-    color: ${colorScheme.title};
-`
-export const TitleText = styled.h6`
-    font-size: 1.2rem;
-    color: ${colorScheme.titleText};
-`
-
-// МЕНЮ
-export const Navbar = styled.div`
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    font-size: 1.5rem;
-    padding-top: 20px;
-
-    @media ${device.mobileL} {
-        justify-content: center;
-        font-size: 1.3rem;
-    }
-`
-// Ссылки навигационного меню
-export const NavbarLink = styled.span`
-    text-decoration: none;
-    color: ${colorScheme.navbarLink};
-    padding-top: 15px;
-    cursor: pointer;
-
-    &:hover {
-        color: ${colorScheme.navbarLinkHover};
-    }
-
-    @media ${device.mobileL} {
-        padding: 5px 10px;
-    }
-`
-export const Copyright = styled.div`
-    position: absolute;
-    bottom: 4%;
-    left: 4%;
-    font-family: 'Material Icons';
-    color: ${colorScheme.copyright};
-    font-size: 1rem;
-
-    &:after {
-        padding-left: 5px;
-        font-family: 'Source Sans Pro', sans-serif;
-        content: 'João Hoyler Correia';
-    }
-`
-
 /* SCREEN №2 */
+
+import styled from 'styled-components'
+import { device } from '../../device/'
+import 'material-icons'
+import { colorScheme } from '../colorScheme'
 
 // 2) Контейнер (наименование альбома, исполнителя, постер, плейлист) - 85vh
 export const ContentWrap = styled.div`
@@ -261,54 +183,5 @@ export const PlayMobile = styled.div`
 
     @media ${device.mobileL} {
         display: block;
-    }
-`
-/* SCREEN №3 */
-// Описание альбомов - 100vh
-export const DescriptionWrap = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    align-content: center;
-    height: 100vh;
-
-    @media ${device.mobileL} {
-        display: none;
-    }
-    @media ${device.laptop} {
-        display: none;
-    }
-`
-export const DescriptionArticle = styled.article`
-    flex: 1;
-    margin: 0 2rem;
-    padding: 2rem;
-    background-color: ${colorScheme.descriptionArticle};
-`
-export const DescriptionImage = styled.div`
-    background-size: contain;
-    width: 300px;
-    height: 200px;
-    padding: 20px;
-`
-export const DescriptionText = styled.p`
-    font-size: 1.4rem;
-`
-
-/* Footer */
-export const FooterWrap = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    height: 2rem;
-    background-color: ${colorScheme.footerWrap};
-    font-family: 'Material Icons';
-    color: ${colorScheme.footerWrapColor};
-    font-size: 1rem;
-
-    &:after {
-        padding-left: 5px;
-        font-family: 'Source Sans Pro', sans-serif;
-        content: 'Лето Наших Надежд", 2019';
     }
 `

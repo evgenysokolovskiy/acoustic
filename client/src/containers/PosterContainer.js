@@ -4,7 +4,7 @@ import { isMobilePlay } from '../store/actions'
 import PlaylistContainer from './PlaylistContainer'
 import Poster from '../components/Poster'
 //import { Texts } from '../components/Texts'
-import { ContentWrap } from '../styles/styled'
+import { ContentWrap } from '../styles/screen2/'
 
 class PosterContainer extends React.Component {
     // Передать через props в потомка (Scale) и вернуть значение play (состояние воспроизведения аудио из мобильной версии)
