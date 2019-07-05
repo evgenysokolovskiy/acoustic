@@ -3,16 +3,17 @@
 const colors = {
     // Основные цвета
     absoluteWhite: '#FFF', // Подкладка для заметок
-    white: '#f6f6f7', // Светлый фон
-    dark: '#2c2c2c', // Тёмный фон
+    white: '#F6F6F7', // Светлый фон
+    dark: '#2C2C2C', // Тёмный фон
+    darkFont: '#262626', // Тёмный шрифт
     middle: '#555', // Заголовки на светлом фоне
-    contrast: '#cc725c', // Контрастный цвет (шкала плеера, яркие заголовки)
+    contrast: '#CC725C', // Контрастный цвет (шкала плеера, яркие заголовки)
 
     // Дополнительные цвета
     black: '#030303', // Футер, фон плеера для радио
-    hover: '#aaa', // При наведении на ссылку
-    press: '#aaa', // При клике на ссылку
-    copyright: '#5e606c' // Для копирайта
+    hover: '#AAA', // При наведении на ссылку
+    press: '#AAA', // При клике на ссылку
+    copyright: '#5E606C' // Для копирайта
 }
 
 export const colorScheme = {
@@ -41,6 +42,9 @@ export const colorScheme = {
     scrabberPoster: colors.middle,
     // Прогресс шкалы под постером
     progressPoster: colors.contrast,
+    // Плейлист
+    playlistItem: colors.darkFont,
+    playlistItemPress: colors.contrast,
     // Плеер
     playerWrap: 'linear-gradient(to top, #444 0%, #555 50%, #444 51%, #444 100%)',
     // Иконка воспроизведения

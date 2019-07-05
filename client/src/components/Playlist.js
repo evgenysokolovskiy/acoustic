@@ -1,22 +1,17 @@
 import React from 'react'
-import { PlaylistWrap, PlaylistItem } from '../styles/screen2/'
+import { PlaylistWrap, PlaylistItem, PlaylistItemPress } from '../styles/screen2/'
 
 export default class Playlist extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            audio: null,
-            index: 0
+            audio: null
         }
         this.host = `http://localhost:5000/api/audio`
     }
 
     componentDidMount() {
         this.setState({ audio: document.getElementById('player') })
-        this.props.album.list.forEach((item, i) => {
-            let track = `<p>${item}</p>`
-            this.playlist.innerHTML += track
-        }) // Построить плейлист
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -24,18 +19,6 @@ export default class Playlist extends React.Component {
         const { album, indexComposition } = this.props
 
         audio.src = `${this.host}/${album.name.charCodeAt(0)}/${indexComposition}.mp3`
-
-        // Сменить альбом
-        if (prevProps.album !== this.props.album) {
-            this.playlist.innerHTML = ''
-            this.props.album.list.forEach((item, i) => {
-                let track = `<p>${item}</p>`
-                this.playlist.innerHTML += track
-            }) // Перестроить плейлист
-
-            // Случай, когда при смене альбома играла композиция с индеком 1.
-            if (prevProps.indexComposition === 1) this.props.getIndexComposition(0) // Индекс композиции отправить родителю (PlaylistContainer)
-        }
     }
 
     // При нажатии в плейлисте на композицию воспроизвести её (изменить индекс)
@@ -47,15 +30,16 @@ export default class Playlist extends React.Component {
     }
 
     render() {
-        return (
-            <PlaylistWrap>
-                <div
-                    ref={playlist => {
-                        this.playlist = playlist
-                    }}
-                    onClick={this.playComposition}
-                />
-            </PlaylistWrap>
-        )
+        let playlist = this.props.album.list.map((item, i) => (
+            <PlaylistItem key={i} id={item} onClick={this.playComposition}>
+                {i !== this.props.indexComposition ? (
+                    item
+                ) : (
+                    <PlaylistItemPress>{item}</PlaylistItemPress>
+                )}
+            </PlaylistItem>
+        ))
+
+        return <PlaylistWrap>{playlist}</PlaylistWrap>
     }
 }

@@ -106,7 +106,10 @@ export const PlaylistWrap = styled.div`
     }
 `
 export const PlaylistItem = styled.p`
-    color: ${colorScheme.scrabberPoster};
+    color: ${colorScheme.playlistItem};
+`
+export const PlaylistItemPress = styled.span`
+    color: ${colorScheme.playlistItemPress};
 `
 // КОНТЕЙНЕР ДЛЯ ПЛЕЕРА
 export const PlayerWrap = styled.div`
