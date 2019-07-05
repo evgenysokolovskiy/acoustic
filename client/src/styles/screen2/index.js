@@ -98,11 +98,15 @@ export const PlaylistWrap = styled.div`
     font-size: 1.6rem;
     margin-left: 4rem;
     padding: 80px 0 50px 0;
+    cursor: pointer;
 
     @media ${device.mobileL} {
         margin: 0;
         font-size: 1.8rem;
     }
+`
+export const PlaylistItem = styled.p`
+    color: ${colorScheme.scrabberPoster};
 `
 // КОНТЕЙНЕР ДЛЯ ПЛЕЕРА
 export const PlayerWrap = styled.div`

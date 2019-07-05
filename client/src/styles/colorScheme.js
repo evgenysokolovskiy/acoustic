@@ -11,6 +11,7 @@ const colors = {
     // Дополнительные цвета
     black: '#030303', // Футер, фон плеера для радио
     hover: '#aaa', // При наведении на ссылку
+    press: '#aaa', // При клике на ссылку
     copyright: '#5e606c' // Для копирайта
 }
 
@@ -26,7 +27,7 @@ export const colorScheme = {
     // Menu
     navbarLink: colors.white,
     navbarLinkHover: colors.hover,
-    navbarLinkPress: 'red',
+    navbarLinkPress: colors.press,
     // Copyright
     copyright: colors.copyright,
 

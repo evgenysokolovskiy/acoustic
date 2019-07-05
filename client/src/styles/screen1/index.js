@@ -57,13 +57,12 @@ export const NavbarLink = styled.span`
     padding-top: 15px;
     cursor: pointer;
 
-    &:hover {
-        color: ${colorScheme.navbarLinkHover};
-    }
-
     @media ${device.mobileL} {
         padding: 5px 10px;
     }
+`
+export const NavbarLinkPress = styled.span`
+    color: ${colorScheme.navbarLinkPress};
 `
 export const Copyright = styled.div`
     position: absolute;

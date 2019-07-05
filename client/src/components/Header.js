@@ -6,35 +6,20 @@ import {
     TitleText,
     Navbar,
     NavbarLink,
+    NavbarLinkPress,
     Copyright
 } from '../styles/screen1/'
-//import { colorScheme } from '../styles/colorScheme'
 
 export default class Header extends React.Component {
     handlePress = e => {
-        this.props.getAlbum(e.target.id) // Вернуть в id альбома в HeaderContainer
-    }
-
-    componentDidUpdate(prevProps) {
-        /*
-        if (prevProps.target !== this.props.target) {
-            const arr = Array.from(this.nav.children)
-           
-            arr.forEach(item => {
-                if (this.props.target === item.innerHTML) {
-                    item.style = `color: ${colorScheme.linkMenuPress};`
-                }
-            })
-        
-        }
-*/
+        this.props.getAlbum(e.target.id) // Вернуть id альбома в HeaderContainer
     }
 
     render() {
         const { names } = this.props
         let list = names.map((item, i) => (
             <NavbarLink key={i} id={item} onClick={this.handlePress}>
-                {item}
+                {item !== this.props.target ? item : <NavbarLinkPress>{item}</NavbarLinkPress>}
             </NavbarLink>
         ))
 
