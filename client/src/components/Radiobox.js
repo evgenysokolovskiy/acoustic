@@ -71,7 +71,7 @@ export default class Radiobox extends React.Component {
             poster = this.props.config[this.props.playStation].poster
         }
         return (
-            <RadioboxWrap>
+            <RadioboxWrap id="radio">
                 <audio
                     src={src}
                     ref={audio => {

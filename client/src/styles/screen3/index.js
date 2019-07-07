@@ -11,6 +11,7 @@ export const DescriptionWrap = styled.div`
     flex-flow: row wrap;
     align-content: center;
     height: 100vh;
+    position: relative;
 
     @media ${device.mobileL} {
         display: none;
@@ -33,4 +34,17 @@ export const DescriptionImage = styled.div`
 `
 export const DescriptionText = styled.p`
     font-size: 1.4rem;
+`
+export const HomeIcon = styled.div`
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-family: 'Material Icons';
+    cursor: pointer;
+    color: ${colorScheme.progress};
+    font-size: 2rem;
+
+    &:hover {
+        color: ${colorScheme.radioIconHover};
+    }
 `

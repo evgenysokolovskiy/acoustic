@@ -28,6 +28,13 @@ export const RadioIcon = styled.div`
         color: ${colorScheme.radioIconHover};
     }
 `
+export const DescriptionIcon = styled(RadioIcon)`
+    right: 8%;
+
+    @media ${device.mobileL} {
+        display: none;
+    }
+`
 export const Title = styled.h2`
     font-size: 1.8rem;
     color: ${colorScheme.title};
@@ -52,7 +59,6 @@ export const Navbar = styled.div`
 `
 // Ссылки навигационного меню
 export const NavbarLink = styled.span`
-    text-decoration: none;
     color: ${colorScheme.navbarLink};
     padding-top: 15px;
     cursor: pointer;
@@ -76,5 +82,18 @@ export const Copyright = styled.div`
         padding-left: 5px;
         font-family: 'Source Sans Pro', sans-serif;
         content: 'João Hoyler Correia';
+    }
+`
+export const Arrow = styled.div`
+    position: absolute;
+    bottom: 4%;
+    right: 4%;
+    font-family: 'Material Icons';
+    cursor: pointer;
+    color: ${colorScheme.radioIcon};
+    font-size: 3rem;
+
+    &:hover {
+        color: ${colorScheme.radioIconHover};
     }
 `

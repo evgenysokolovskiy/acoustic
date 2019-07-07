@@ -4,7 +4,7 @@ import HeaderContainer from '../containers/HeaderContainer'
 import PosterContainer from './PosterContainer'
 import PlayerContainer from './PlayerContainer'
 import RadioboxContainer from '../containers/RadioboxContainer'
-import { Description } from '../components/Description'
+import Description from '../components/Description'
 import { Footer } from '../components/Footer'
 
 const App = () => {

@@ -13,6 +13,7 @@ export const ContentWrap = styled.div`
     align-items: flex-start;
     height: 85vh;
     padding-top: 5vh;
+    position: relative;
 
     @media ${device.mobileL} {
         height: auto;
@@ -178,6 +179,19 @@ export const Timeline = styled.div`
 
     @media ${device.mobileL} {
         font-size: 1.4rem;
+    }
+`
+export const HomeIcon = styled.div`
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-family: 'Material Icons';
+    cursor: pointer;
+    color: ${colorScheme.progress};
+    font-size: 3rem;
+
+    &:hover {
+        color: ${colorScheme.radioIconHover};
     }
 `
 // Мобильная версия плеера

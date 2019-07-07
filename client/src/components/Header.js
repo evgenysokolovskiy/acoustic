@@ -1,18 +1,35 @@
 import React from 'react'
 import {
     HeaderWrap,
+    DescriptionIcon,
     RadioIcon,
     Title,
     TitleText,
     Navbar,
     NavbarLink,
     NavbarLinkPress,
-    Copyright
+    Copyright,
+    Arrow
 } from '../styles/screen1/'
 
 export default class Header extends React.Component {
     handlePress = e => {
         this.props.getAlbum(e.target.id) // Вернуть id альбома в HeaderContainer
+    }
+
+    handlePressDescriptionIcon = () => {
+        const elem = document.getElementById('description')
+        elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+    }
+
+    handlePressRadioIcon = () => {
+        const elem = document.getElementById('radio')
+        elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+    }
+
+    handlePressArrow = () => {
+        const elem = document.getElementById('poster')
+        elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
 
     render() {
@@ -24,9 +41,9 @@ export default class Header extends React.Component {
         ))
 
         return (
-            <header>
+            <header id="header">
                 <HeaderWrap>
-                    <RadioIcon>radio</RadioIcon>
+                    <RadioIcon onClick={this.handlePressRadioIcon}>radio</RadioIcon>
                     <Title>Acoustic-friends.ru</Title>
                     <TitleText>Акустическая музыка для друзей</TitleText>
                     <Navbar
@@ -37,6 +54,10 @@ export default class Header extends React.Component {
                         {list}
                     </Navbar>
                     <Copyright>copyright</Copyright>
+                    <DescriptionIcon onClick={this.handlePressDescriptionIcon}>
+                        arrow_back_ios
+                    </DescriptionIcon>
+                    <Arrow onClick={this.handlePressArrow}>keyboard_arrow_down</Arrow>
                 </HeaderWrap>
             </header>
         )
