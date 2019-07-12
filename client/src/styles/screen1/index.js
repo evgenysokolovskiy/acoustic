@@ -8,6 +8,7 @@ import { poster } from '../../api/images'
 
 // Header - 100vh
 export const HeaderWrap = styled.div`
+    flex: 1;
     height: 100vh;
     position: relative;
     padding-top: 40vh;

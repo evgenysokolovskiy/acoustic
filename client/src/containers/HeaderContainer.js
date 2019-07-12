@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { changeAlbum, changeIndexComposition, getMetadataFromServer } from '../store/actions/'
 import { configAlbum } from '../config/'
 import Header from '../components/Header'
+import { Test } from '../components/Test'
 
 class HeaderContainer extends React.Component {
     constructor(props) {
@@ -46,11 +47,14 @@ class HeaderContainer extends React.Component {
 
     render() {
         return (
-            <Header
-                names={this.state.names}
-                target={this.props.album.name}
-                getAlbum={this.getAlbum}
-            />
+            <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'center' }}>
+                <Header
+                    names={this.state.names}
+                    target={this.props.album.name}
+                    getAlbum={this.getAlbum}
+                />
+                <Test />
+            </div>
         )
     }
 }

@@ -18,8 +18,38 @@ export default class Header extends React.Component {
     }
 
     handlePressDescriptionIcon = () => {
-        const elem = document.getElementById('description')
-        elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+        //const elem = document.getElementById('description')
+        //elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+        const elem = document.getElementById('test')
+        elem.style.cssText += 'display: block;'
+
+        let str = elem.children[0]
+        let value = str.innerHTML
+        str.innerHTML = ''
+
+        var i = 0
+        ;(function iterate() {
+            if (value.length > i) {
+                str.innerHTML += value[i]
+                i++
+            }
+
+            setTimeout(iterate, 10)
+        })()
+
+        setTimeout(function() {
+            document.getElementById('content').style.cssText += 'display: block;'
+        }, 10 * value.length)
+
+        /*
+let i = 0
+        while (i < list.length) {
+            setTimeout(() => {
+                elem.innerHTML += list[i]
+                i++
+            }, 1000)
+        }
+*/
     }
 
     handlePressRadioIcon = () => {
@@ -41,25 +71,23 @@ export default class Header extends React.Component {
         ))
 
         return (
-            <header id="header">
-                <HeaderWrap>
-                    <RadioIcon onClick={this.handlePressRadioIcon}>radio</RadioIcon>
-                    <Title>Acoustic-friends.ru</Title>
-                    <TitleText>Акустическая музыка для друзей</TitleText>
-                    <Navbar
-                        ref={nav => {
-                            this.nav = nav
-                        }}
-                    >
-                        {list}
-                    </Navbar>
-                    <Copyright>copyright</Copyright>
-                    <DescriptionIcon onClick={this.handlePressDescriptionIcon}>
-                        arrow_back_ios
-                    </DescriptionIcon>
-                    <Arrow onClick={this.handlePressArrow}>keyboard_arrow_down</Arrow>
-                </HeaderWrap>
-            </header>
+            <HeaderWrap id="header">
+                <RadioIcon onClick={this.handlePressRadioIcon}>radio</RadioIcon>
+                <Title>Acoustic-friends.ru</Title>
+                <TitleText>Акустическая музыка для друзей</TitleText>
+                <Navbar
+                    ref={nav => {
+                        this.nav = nav
+                    }}
+                >
+                    {list}
+                </Navbar>
+                <Copyright>copyright</Copyright>
+                <DescriptionIcon onClick={this.handlePressDescriptionIcon}>
+                    arrow_back_ios
+                </DescriptionIcon>
+                <Arrow onClick={this.handlePressArrow}>keyboard_arrow_down</Arrow>
+            </HeaderWrap>
         )
     }
 }

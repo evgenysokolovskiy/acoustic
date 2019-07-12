@@ -34,7 +34,7 @@ export default class Description extends React.Component {
         return (
             <DescriptionWrap id="description">
                 {article}
-                <HomeIcon onClick={this.handlePressHomeIcon}>home</HomeIcon>
+                <HomeIcon onClick={this.handlePressHomeIcon}>close</HomeIcon>
             </DescriptionWrap>
         )
     }
