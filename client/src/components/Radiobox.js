@@ -20,6 +20,7 @@ export default class Radiobox extends React.Component {
 
     componentDidMount() {
         this.props.getRadioStation('seattleWaveRadio')
+        this.props.getRadioboxElem(this.radioboxElem)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -71,7 +72,11 @@ export default class Radiobox extends React.Component {
             poster = this.props.config[this.props.playStation].poster
         }
         return (
-            <RadioboxWrap id="radio">
+            <RadioboxWrap
+                ref={radioboxElem => {
+                    this.radioboxElem = radioboxElem
+                }}
+            >
                 <audio
                     src={src}
                     ref={audio => {

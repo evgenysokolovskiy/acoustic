@@ -22,6 +22,11 @@ export const colorScheme = {
     // RadioIcon
     radioIcon: colors.white,
     radioIconHover: colors.hover,
+    asideIcon: colors.middle,
+    asideIconHover: colors.contrast,
+
+    textsWrap: colors.darkFont,
+
     // Title
     title: colors.white,
     titleText: colors.contrast,

@@ -7,6 +7,10 @@ export const DURATION_COMPOSITION = 'DURATION_COMPOSITION'
 export const CURRENT_TIME = 'CURRENT_TIME'
 export const RADIO_STATION = 'RADIO_STATION'
 export const PLAY_MOBILE = 'PLAY_MOBILE'
+// Элементы
+export const HEADER_ELEM = 'HEADER_ELEM'
+export const POSTER_ELEM = 'POSTER_ELEM'
+export const RADIOBOX_ELEM = 'RADIOBOX_ELEM'
 
 // Данные альбома
 export function changeAlbum(album) {
@@ -53,6 +57,32 @@ export function isMobilePlay(play) {
     return {
         type: PLAY_MOBILE,
         payload: play
+    }
+}
+
+/* Получить элементы */
+
+// Получить элемент header
+export function getHeaderElem(headerElem) {
+    return {
+        type: HEADER_ELEM,
+        payload: headerElem
+    }
+}
+
+// Получить элемент poster
+export function getPosterElem(posterElem) {
+    return {
+        type: POSTER_ELEM,
+        payload: posterElem
+    }
+}
+
+// Получить элемент radiobox
+export function getRadioboxElem(radioboxElem) {
+    return {
+        type: RADIOBOX_ELEM,
+        payload: radioboxElem
     }
 }
 

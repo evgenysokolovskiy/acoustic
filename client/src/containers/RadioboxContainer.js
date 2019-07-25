@@ -1,12 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeRadioStation } from '../store/actions'
+import { changeRadioStation, getRadioboxElem } from '../store/actions'
 import Radiobox from '../components/Radiobox'
 import { configRadioStations } from '../config/radio'
 
 class RadioboxContainer extends React.Component {
+    // Радиостанция
     getRadioStation = radioStation => {
         this.props.changeRadioStation(radioStation) // Передать в store значение для radioStation
+    }
+
+    // Радиобокс элемент
+    getRadioboxElem = radioboxElem => {
+        this.props.getRadioboxElem(radioboxElem)
     }
 
     render() {
@@ -15,6 +21,7 @@ class RadioboxContainer extends React.Component {
                 config={configRadioStations}
                 playStation={this.props.playStation}
                 getRadioStation={this.getRadioStation}
+                getRadioboxElem={this.getRadioboxElem}
             />
         )
     }
@@ -27,7 +34,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    changeRadioStation
+    changeRadioStation,
+    getRadioboxElem
 }
 
 export default connect(

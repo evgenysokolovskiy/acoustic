@@ -36,6 +36,51 @@ export const DescriptionIcon = styled(RadioIcon)`
         display: none;
     }
 `
+export const TextsIcon = styled(RadioIcon)`
+    right: 12%;
+
+    @media ${device.mobileL} {
+        display: none;
+    }
+`
+
+export const TestWrapper = styled.div`
+    display: none;
+    height: 100vh;
+    overflow-y: scroll;
+    flex: 0.5;
+    padding: 2% 3%;
+    font-size: 1.2rem;
+`
+export const TextsWrap = styled(RadioIcon)`
+    right: 12%;
+    font-size: 0.9rem;
+    color: ${colorScheme.textsWrap};
+
+    @media ${device.mobileL} {
+        display: none;
+    }
+`
+export const AsideIconClose = styled(RadioIcon)`
+    right: 2%;
+    color: ${colorScheme.asideIcon};
+
+    &:hover {
+        color: ${colorScheme.asideIconHover};
+    }
+`
+export const PosterNameAlbum = styled.h2`
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 1.7rem;
+    color: ${colorScheme.posterNameAlbum};
+`
+export const PosterArtist = styled.h5`
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: ${colorScheme.posterArtist};
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+`
+
 export const Title = styled.h2`
     font-size: 1.8rem;
     color: ${colorScheme.title};

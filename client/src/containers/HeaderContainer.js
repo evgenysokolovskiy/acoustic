@@ -1,9 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeAlbum, changeIndexComposition, getMetadataFromServer } from '../store/actions/'
+import {
+    changeAlbum,
+    changeIndexComposition,
+    getMetadataFromServer,
+    getHeaderElem
+} from '../store/actions/'
 import { configAlbum } from '../config/'
 import Header from '../components/Header'
-import { Test } from '../components/Test'
 
 class HeaderContainer extends React.Component {
     constructor(props) {
@@ -45,15 +49,23 @@ class HeaderContainer extends React.Component {
         this.props.getMetadataFromServer(config.name) // Отправить наименование выбранного альбома на сервер и вернуть duration его композиций
     }
 
+    getHeader = headerElem => {
+        this.props.getHeaderElem(headerElem) // Передать в store значение для indexComposition
+    }
+
     render() {
         return (
             <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'center' }}>
                 <Header
                     names={this.state.names}
                     target={this.props.album.name}
+                    album={this.props.album}
+                    indexComposition={this.props.indexComposition}
+                    radioboxElem={this.props.radioboxElem}
+                    posterElem={this.props.posterElem}
                     getAlbum={this.getAlbum}
+                    getHeader={this.getHeader}
                 />
-                <Test />
             </div>
         )
     }
@@ -62,14 +74,17 @@ class HeaderContainer extends React.Component {
 function mapStateToProps(state) {
     return {
         indexComposition: state.indexComposition,
-        album: state.album
+        album: state.album,
+        radioboxElem: state.radioboxElem,
+        posterElem: state.posterElem
     }
 }
 
 const mapDispatchToProps = {
     changeAlbum,
     changeIndexComposition,
-    getMetadataFromServer
+    getMetadataFromServer,
+    getHeaderElem
 }
 
 export default connect(

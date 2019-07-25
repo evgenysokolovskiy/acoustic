@@ -1,6 +1,9 @@
 import React from 'react'
+import Description from './Description'
+import Texts from './Texts'
 import {
     HeaderWrap,
+    TextsIcon,
     DescriptionIcon,
     RadioIcon,
     Title,
@@ -13,56 +16,71 @@ import {
 } from '../styles/screen1/'
 
 export default class Header extends React.Component {
-    handlePress = e => {
-        this.props.getAlbum(e.target.id) // Вернуть id альбома в HeaderContainer
-    }
-
-    handlePressDescriptionIcon = () => {
-        //const elem = document.getElementById('description')
-        //elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
-        const elem = document.getElementById('test')
-        elem.style.cssText += 'display: block;'
-
-        let str = elem.children[0]
-        let value = str.innerHTML
-        str.innerHTML = ''
-
-        var i = 0
-        ;(function iterate() {
-            if (value.length > i) {
-                str.innerHTML += value[i]
-                i++
-            }
-
-            setTimeout(iterate, 10)
-        })()
-
-        setTimeout(function() {
-            document.getElementById('content').style.cssText += 'display: block;'
-        }, 10 * value.length)
-
-        /*
-let i = 0
-        while (i < list.length) {
-            setTimeout(() => {
-                elem.innerHTML += list[i]
-                i++
-            }, 1000)
+    constructor(props) {
+        super(props)
+        this.state = {
+            txtElem: null,
+            descriptionElem: null,
+            radioboxElem: null
         }
-*/
+    }
+    componentDidMount() {
+        this.props.getHeader(this.headerElem)
     }
 
+    // Получить id альбома в HeaderContainer
+    handlePress = e => {
+        this.props.getAlbum(e.target.id)
+    }
+
+    /* Получить элементы */
+
+    // Тексты песен
+    getTxtElem = txtElem => {
+        this.setState({ txtElem })
+    }
+
+    // Описание альбомов
+    getDescriptionElem = descriptionElem => {
+        this.setState({ descriptionElem })
+    }
+
+    /* Клик по кнопкам навигации */
+
+    // Тексты песен
+    handlePressTextsIcon = () => {
+        // Показать элемент
+        const elem = this.state.txtElem
+        elem.style.cssText += 'display: block;'
+        // Скрыть элемент (если открыт)
+        const hide = this.state.descriptionElem
+        hide.style.cssText += 'display: none;'
+    }
+
+    // Описание альбомов
+    handlePressDescriptionIcon = () => {
+        // Показать элемент
+        const elem = this.state.descriptionElem
+        elem.style.cssText += 'display: block;'
+        // Скрыть элемент (если открыт)
+        const hide = this.state.txtElem
+        hide.style.cssText += 'display: none;'
+    }
+
+    // Радиобокс
     handlePressRadioIcon = () => {
-        const elem = document.getElementById('radio')
-        elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+        const radioboxElem = this.props.radioboxElem
+        radioboxElem.scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
 
+    // Стрелка вниз (страница прослушивания)
     handlePressArrow = () => {
-        const elem = document.getElementById('poster')
+        const elem = this.props.posterElem
         elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
 
     render() {
+        // Построить меню с названиями альбомов. Выделить активную ссылку
         const { names } = this.props
         let list = names.map((item, i) => (
             <NavbarLink key={i} id={item} onClick={this.handlePress}>
@@ -71,23 +89,37 @@ let i = 0
         ))
 
         return (
-            <HeaderWrap id="header">
-                <RadioIcon onClick={this.handlePressRadioIcon}>radio</RadioIcon>
-                <Title>Acoustic-friends.ru</Title>
-                <TitleText>Акустическая музыка для друзей</TitleText>
-                <Navbar
-                    ref={nav => {
-                        this.nav = nav
+            <>
+                <HeaderWrap
+                    ref={headerElem => {
+                        this.headerElem = headerElem
                     }}
                 >
-                    {list}
-                </Navbar>
-                <Copyright>copyright</Copyright>
-                <DescriptionIcon onClick={this.handlePressDescriptionIcon}>
-                    arrow_back_ios
-                </DescriptionIcon>
-                <Arrow onClick={this.handlePressArrow}>keyboard_arrow_down</Arrow>
-            </HeaderWrap>
+                    <Title>Acoustic-friends.ru</Title>
+                    <TitleText>Акустическая музыка для друзей</TitleText>
+                    <Navbar>{list}</Navbar>
+                    <Copyright>copyright</Copyright>
+                    <TextsIcon onClick={this.handlePressTextsIcon}>text_fields</TextsIcon>
+                    <DescriptionIcon onClick={this.handlePressDescriptionIcon}>
+                        description
+                    </DescriptionIcon>
+                    <RadioIcon onClick={this.handlePressRadioIcon}>radio</RadioIcon>
+                    <Arrow onClick={this.handlePressArrow}>keyboard_arrow_down</Arrow>
+                </HeaderWrap>
+                <Description
+                    album={this.props.album}
+                    indexComposition={this.props.indexComposition}
+                    getDescriptionElem={this.getDescriptionElem}
+                />
+                <Texts
+                    album={this.props.album}
+                    indexComposition={this.props.indexComposition}
+                    getTxtElem={this.getTxtElem}
+                    ref={txtElem => {
+                        this.txtElem = txtElem
+                    }}
+                />
+            </>
         )
     }
 }

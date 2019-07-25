@@ -5,7 +5,11 @@ import {
     DURATION_COMPOSITION,
     CURRENT_TIME,
     RADIO_STATION,
-    PLAY_MOBILE
+    PLAY_MOBILE,
+    // Элементы
+    HEADER_ELEM,
+    POSTER_ELEM,
+    RADIOBOX_ELEM
 } from '../actions/'
 
 const initialState = {
@@ -15,7 +19,12 @@ const initialState = {
     duration: [], // Продолжительность композиции
 
     playStation: '',
-    playMobile: false // Воспроизведение аудио из мобильной версии
+    playMobile: false, // Воспроизведение аудио из мобильной версии
+
+    // Элементы
+    headerElem: null,
+    posterElem: null,
+    radioboxElem: null
 }
 
 export function rootReducer(state = initialState, action) {
@@ -37,6 +46,16 @@ export function rootReducer(state = initialState, action) {
 
         case PLAY_MOBILE:
             return { ...state, playMobile: action.payload }
+
+        // Получить элементы
+        case HEADER_ELEM:
+            return { ...state, headerElem: action.payload }
+
+        case POSTER_ELEM:
+            return { ...state, posterElem: action.payload }
+
+        case RADIOBOX_ELEM:
+            return { ...state, radioboxElem: action.payload }
 
         default:
             return state

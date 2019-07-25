@@ -1,14 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { isMobilePlay } from '../store/actions'
+import { isMobilePlay, getPosterElem } from '../store/actions'
 import PlaylistContainer from './PlaylistContainer'
 import Poster from '../components/Poster'
-//import { Texts } from '../components/Texts'
 import { ContentWrap, HomeIcon } from '../styles/screen2/'
 
 class PosterContainer extends React.Component {
+    componentDidMount() {
+        this.props.getPosterElem(this.posterElem)
+    }
+
     handlePressHomeIcon = () => {
-        const elem = document.getElementById('header')
+        const elem = this.props.headerElem
         elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
 
@@ -20,7 +23,11 @@ class PosterContainer extends React.Component {
     render() {
         const { indexComposition, currentTime, album, duration } = this.props
         return (
-            <ContentWrap id="poster">
+            <ContentWrap
+                ref={posterElem => {
+                    this.posterElem = posterElem
+                }}
+            >
                 <Poster
                     album={album}
                     indexComposition={indexComposition}
@@ -29,7 +36,6 @@ class PosterContainer extends React.Component {
                     getMobilPlay={this.getMobilPlay}
                 />
                 <PlaylistContainer />
-                {/*<Texts album={album} indexComposition={indexComposition} />*/}
                 <HomeIcon onClick={this.handlePressHomeIcon}>keyboard_arrow_up</HomeIcon>
             </ContentWrap>
         )
@@ -41,12 +47,14 @@ const mapStateToProps = state => {
         indexComposition: state.indexComposition,
         currentTime: state.currentTime,
         album: state.album,
-        duration: state.duration
+        duration: state.duration,
+        headerElem: state.headerElem
     }
 }
 
 const mapDispatchToProps = {
-    isMobilePlay
+    isMobilePlay,
+    getPosterElem
 }
 
 export default connect(
