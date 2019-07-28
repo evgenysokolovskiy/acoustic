@@ -9,7 +9,8 @@ import {
     RadioboxNextElem,
     RadioboxWrapText,
     RadioboxTitle,
-    RadioboxTitleText
+    RadioboxTitleText,
+    HomeIcon
 } from '../styles/screen4/'
 
 export default class Radiobox extends React.Component {
@@ -37,11 +38,11 @@ export default class Radiobox extends React.Component {
 
     // Предыдущая в списке радиостанция
     prevRadioStation = () => {
-        const { playStation } = this.props
+        const { radioStation } = this.props
         const stations = Object.keys(this.props.config)
         let station
         for (let i = 0; i < stations.length; i++) {
-            if (playStation === stations[i]) {
+            if (radioStation === stations[i]) {
                 station = stations[--i]
                 break
             }
@@ -52,11 +53,11 @@ export default class Radiobox extends React.Component {
 
     // Следующая в списке радиостанция
     nextRadioStation = () => {
-        const { playStation } = this.props
+        const { radioStation } = this.props
         const stations = Object.keys(this.props.config)
         let station
         for (let i = 0; i < stations.length; i++) {
-            if (playStation === stations[i]) {
+            if (radioStation === stations[i]) {
                 station = stations[++i]
                 break
             }
@@ -65,11 +66,17 @@ export default class Radiobox extends React.Component {
         this.props.getRadioStation(station)
     }
 
+    // Вернуться в главное окно
+    handlePressHomeIcon = () => {
+        const elem = this.props.headerElem
+        elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+    }
+
     render() {
         let src, poster
-        if (this.props.config[this.props.playStation]) {
-            src = this.props.config[this.props.playStation].src
-            poster = this.props.config[this.props.playStation].poster
+        if (this.props.config[this.props.radioStation]) {
+            src = this.props.config[this.props.radioStation].src
+            poster = this.props.config[this.props.radioStation].poster
         }
         return (
             <RadioboxWrap
@@ -101,6 +108,7 @@ export default class Radiobox extends React.Component {
                     <RadioboxTitle>seattle wave radio</RadioboxTitle>
                     <RadioboxTitleText>genre: 'acoustic'</RadioboxTitleText>
                 </RadioboxWrapText>
+                <HomeIcon onClick={this.handlePressHomeIcon}>keyboard_arrow_up</HomeIcon>
             </RadioboxWrap>
         )
     }

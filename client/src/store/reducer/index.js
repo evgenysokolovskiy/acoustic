@@ -4,24 +4,30 @@ import {
     INDEX_COMPOSITION,
     DURATION_COMPOSITION,
     CURRENT_TIME,
+    PLAY,
     RADIO_STATION,
-    PLAY_MOBILE,
-    // Элементы
+    // Элементы DOM
+    AUDIO_ELEM,
     HEADER_ELEM,
     POSTER_ELEM,
     RADIOBOX_ELEM
 } from '../actions/'
 
 const initialState = {
-    album: configAlbum[Object.keys(configAlbum)[0]], // первый альбом в configAlbum
-    indexComposition: 0, // Первая композиция (индекс равен 0)
-    currentTime: 0, // Проигрывание композиции не началось (время композиции равно 0)
-    duration: [], // Продолжительность композиции
-
-    playStation: '',
-    playMobile: false, // Воспроизведение аудио из мобильной версии
-
-    // Элементы
+    // первый альбом в configAlbum
+    album: configAlbum[Object.keys(configAlbum)[0]],
+    // Первая композиция (индекс равен 0)
+    indexComposition: 0,
+    // Проигрывание композиции не началось (время композиции равно 0)
+    currentTime: 0,
+    // Продолжительность композиции
+    duration: [],
+    // Воспроизведение аудио
+    play: false,
+    // Радиостанция
+    radioStation: '',
+    // Элементы DOM
+    audioElem: null,
     headerElem: null,
     posterElem: null,
     radioboxElem: null
@@ -41,13 +47,16 @@ export function rootReducer(state = initialState, action) {
         case DURATION_COMPOSITION:
             return { ...state, duration: action.payload }
 
+        case PLAY:
+            return { ...state, play: action.payload }
+
         case RADIO_STATION:
-            return { ...state, playStation: action.payload }
+            return { ...state, radioStation: action.payload }
 
-        case PLAY_MOBILE:
-            return { ...state, playMobile: action.payload }
+        // Получить элементы DOM
+        case AUDIO_ELEM:
+            return { ...state, audioElem: action.payload }
 
-        // Получить элементы
         case HEADER_ELEM:
             return { ...state, headerElem: action.payload }
 

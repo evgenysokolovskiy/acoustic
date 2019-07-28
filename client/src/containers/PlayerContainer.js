@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeIndexComposition, changeCurrentTime } from '../store/actions'
+import { changeIndexComposition, changeCurrentTime, isPlay, getAudioElem } from '../store/actions'
 import Player from '../components/Player'
 
 class PlayerContainer extends React.Component {
@@ -18,16 +18,26 @@ class PlayerContainer extends React.Component {
         this.props.changeCurrentTime(value)
     }
 
+    getStatePlay = () => {
+        this.props.isPlay(!this.props.play)
+    }
+
+    getAudio = audioElem => {
+        this.props.getAudioElem(audioElem) // Передать в store значение для indexComposition
+    }
+
     render() {
-        const { indexComposition, currentTime, album, isMobilePlay } = this.props
+        const { indexComposition, currentTime, album, play } = this.props
         return (
             <Player
                 indexComposition={indexComposition}
                 currentTime={currentTime}
                 album={album}
-                isMobilePlay={isMobilePlay}
+                play={play}
                 getIndexComposition={this.getIndexComposition}
                 getCurrentTime={this.getCurrentTime}
+                getStatePlay={this.getStatePlay}
+                getAudio={this.getAudio}
             />
         )
     }
@@ -38,13 +48,15 @@ const mapStateToProps = state => {
         indexComposition: state.indexComposition,
         currentTime: state.currentTime,
         album: state.album,
-        isMobilePlay: state.playMobile
+        play: state.play
     }
 }
 
 const mapDispatchToProps = {
     changeIndexComposition,
-    changeCurrentTime
+    changeCurrentTime,
+    isPlay,
+    getAudioElem
 }
 
 export default connect(

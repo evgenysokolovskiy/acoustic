@@ -181,6 +181,7 @@ export const Timeline = styled.div`
         font-size: 1.4rem;
     }
 `
+// Иконка главное окно
 export const HomeIcon = styled.div`
     position: absolute;
     top: 4%;

@@ -5,9 +5,10 @@ export const ALBUM = 'ALBUM'
 export const INDEX_COMPOSITION = 'INDEX_COMPOSITION'
 export const DURATION_COMPOSITION = 'DURATION_COMPOSITION'
 export const CURRENT_TIME = 'CURRENT_TIME'
+export const PLAY = 'PLAY'
 export const RADIO_STATION = 'RADIO_STATION'
-export const PLAY_MOBILE = 'PLAY_MOBILE'
-// Элементы
+// Элементы DOM
+export const AUDIO_ELEM = 'AUDIO_ELEM'
 export const HEADER_ELEM = 'HEADER_ELEM'
 export const POSTER_ELEM = 'POSTER_ELEM'
 export const RADIOBOX_ELEM = 'RADIOBOX_ELEM'
@@ -44,23 +45,31 @@ export function changeCurrentTime(currentTime) {
     }
 }
 
-// Изменить проигрываемую радиостанцию
-export function changeRadioStation(station) {
+// Воспроизведение композиции
+export function isPlay(play) {
     return {
-        type: RADIO_STATION,
-        payload: station
-    }
-}
-
-// Воспроизведение композиции из мобильной версии
-export function isMobilePlay(play) {
-    return {
-        type: PLAY_MOBILE,
+        type: PLAY,
         payload: play
     }
 }
 
-/* Получить элементы */
+// Изменить проигрываемую радиостанцию
+export function changeRadioStation(radioStation) {
+    return {
+        type: RADIO_STATION,
+        payload: radioStation
+    }
+}
+
+/* Получить элементы DOM */
+
+// Получить элемент audio
+export function getAudioElem(audioElem) {
+    return {
+        type: AUDIO_ELEM,
+        payload: audioElem
+    }
+}
 
 // Получить элемент header
 export function getHeaderElem(headerElem) {

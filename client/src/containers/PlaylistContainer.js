@@ -15,6 +15,7 @@ class PlaylistContainer extends React.Component {
                 indexComposition={indexComposition}
                 album={album}
                 getIndexComposition={this.getIndexComposition}
+                audioElem={this.props.audioElem}
             />
         )
     }
@@ -23,7 +24,8 @@ class PlaylistContainer extends React.Component {
 const mapStateToProps = state => {
     return {
         indexComposition: state.indexComposition,
-        album: state.album
+        album: state.album,
+        audioElem: state.audioElem
     }
 }
 

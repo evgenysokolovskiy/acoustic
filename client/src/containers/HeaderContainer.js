@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
     changeAlbum,
     changeIndexComposition,
+    isPlay,
     getMetadataFromServer,
     getHeaderElem
 } from '../store/actions/'
@@ -53,6 +54,10 @@ class HeaderContainer extends React.Component {
         this.props.getHeaderElem(headerElem) // Передать в store значение для indexComposition
     }
 
+    getStatePlay = () => {
+        this.props.isPlay(!this.props.play)
+    }
+
     render() {
         return (
             <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'center' }}>
@@ -61,10 +66,13 @@ class HeaderContainer extends React.Component {
                     target={this.props.album.name}
                     album={this.props.album}
                     indexComposition={this.props.indexComposition}
+                    play={this.props.play}
                     radioboxElem={this.props.radioboxElem}
                     posterElem={this.props.posterElem}
+                    // Получить ответ
                     getAlbum={this.getAlbum}
                     getHeader={this.getHeader}
+                    getStatePlay={this.getStatePlay}
                 />
             </div>
         )
@@ -75,6 +83,7 @@ function mapStateToProps(state) {
     return {
         indexComposition: state.indexComposition,
         album: state.album,
+        play: state.play,
         radioboxElem: state.radioboxElem,
         posterElem: state.posterElem
     }
@@ -83,6 +92,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     changeAlbum,
     changeIndexComposition,
+    isPlay,
     getMetadataFromServer,
     getHeaderElem
 }

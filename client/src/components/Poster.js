@@ -16,21 +16,20 @@ export default class Poster extends React.Component {
     constructor(props) {
         super(props)
         // Стейты используются для управления состоянием воспроизведения аудио в мобильной версии сайта
-        this.state = { play: false, icon_play: 'play_arrow' }
+        this.state = { playIcon: 'play_arrow' }
     }
 
-    componentDidUpdate(prevState) {
-        // Контроль управления воспроизведением аудио в мобильной версии
-        // Записать в Store состояние (true/false)
-        if (prevState.play !== this.state.play) {
-            this.props.getMobilPlay(this.state.play)
+    componentDidUpdate(prevProps) {
+        if (prevProps.play !== this.props.play) {
+            this.props.play
+                ? this.setState({ playIcon: 'pause' })
+                : this.setState({ playIcon: 'play_arrow' })
         }
     }
-    // 1) Воспроизведение / пауза
-    toggleMusic = () => {
-        this.state.icon_play === 'play_arrow'
-            ? this.setState({ icon_play: 'pause', play: true })
-            : this.setState({ icon_play: 'play_arrow', play: false })
+
+    // Передать родителю событие клика по иконке воспроизведение / пауза
+    toggleMusic = e => {
+        this.props.getStatePlay(true)
     }
 
     render() {
@@ -66,7 +65,7 @@ export default class Poster extends React.Component {
                 <PosterArtist>{this.props.album.author}</PosterArtist>
                 <PosterImageWrap>
                     <PosterImage src={this.props.album.poster} />
-                    <PlayMobile onClick={this.toggleMusic}>{this.state.icon_play}</PlayMobile>
+                    <PlayMobile onClick={this.toggleMusic}>{this.state.playIcon}</PlayMobile>
                 </PosterImageWrap>
 
                 <ScrabberPoster

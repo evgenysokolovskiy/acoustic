@@ -19,7 +19,8 @@ class RadioboxContainer extends React.Component {
         return (
             <Radiobox
                 config={configRadioStations}
-                playStation={this.props.playStation}
+                radioStation={this.props.radioStation}
+                headerElem={this.props.headerElem}
                 getRadioStation={this.getRadioStation}
                 getRadioboxElem={this.getRadioboxElem}
             />
@@ -29,7 +30,8 @@ class RadioboxContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        playStation: state.playStation
+        radioStation: state.radioStation,
+        headerElem: state.headerElem
     }
 }
 

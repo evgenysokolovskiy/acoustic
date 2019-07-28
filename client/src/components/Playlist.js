@@ -4,21 +4,12 @@ import { PlaylistWrap, PlaylistItem, PlaylistItemPress } from '../styles/screen2
 export default class Playlist extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            audio: null
-        }
         this.host = `http://localhost:5000/api/audio`
     }
 
-    componentDidMount() {
-        this.setState({ audio: document.getElementById('player') })
-    }
-
     componentDidUpdate(prevProps, prevState) {
-        const audio = this.state.audio
-        const { album, indexComposition } = this.props
-
-        audio.src = `${this.host}/${album.name.charCodeAt(0)}/${indexComposition}.mp3`
+        const { audioElem, album, indexComposition } = this.props
+        audioElem.src = `${this.host}/${album.name.charCodeAt(0)}/${indexComposition}.mp3`
     }
 
     // При нажатии в плейлисте на композицию воспроизвести её (изменить индекс)

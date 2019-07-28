@@ -11,6 +11,7 @@ import {
     Navbar,
     NavbarLink,
     NavbarLinkPress,
+    PlayIcon,
     Copyright,
     Arrow
 } from '../styles/screen1/'
@@ -21,16 +22,30 @@ export default class Header extends React.Component {
         this.state = {
             txtElem: null,
             descriptionElem: null,
-            radioboxElem: null
+            radioboxElem: null,
+            playIcon: 'play_arrow'
         }
     }
     componentDidMount() {
         this.props.getHeader(this.headerElem)
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.play !== this.props.play) {
+            this.props.play
+                ? this.setState({ playIcon: 'pause' })
+                : this.setState({ playIcon: 'play_arrow' })
+        }
+    }
+
     // Получить id альбома в HeaderContainer
     handlePress = e => {
         this.props.getAlbum(e.target.id)
+    }
+
+    // Передать родителю событие клика по иконке воспроизведение / пауза
+    toggleMusic = e => {
+        this.props.getStatePlay(true)
     }
 
     /* Получить элементы */
@@ -98,6 +113,7 @@ export default class Header extends React.Component {
                     <Title>Acoustic-friends.ru</Title>
                     <TitleText>Акустическая музыка для друзей</TitleText>
                     <Navbar>{list}</Navbar>
+                    <PlayIcon onClick={this.toggleMusic}>{this.state.playIcon}</PlayIcon>
                     <Copyright>copyright</Copyright>
                     <TextsIcon onClick={this.handlePressTextsIcon}>text_fields</TextsIcon>
                     <DescriptionIcon onClick={this.handlePressDescriptionIcon}>

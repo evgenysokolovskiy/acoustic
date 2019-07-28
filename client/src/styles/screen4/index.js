@@ -12,6 +12,7 @@ export const RadioboxWrap = styled.div`
     align-items: center;
     height: 90vh;
     background-color: ${colorScheme.radioboxWrap};
+    position: relative;
 
     @media ${device.mobileL} {
         flex-direction: column;
@@ -63,6 +64,20 @@ export const RadioboxTitle = styled.h4`
 export const RadioboxTitleText = styled.p`
     color: ${colorScheme.radioboxTitleText};
     font-size: 1.2em;
+`
+// Иконка главное окно
+export const HomeIcon = styled.div`
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-family: 'Material Icons';
+    cursor: pointer;
+    color: ${colorScheme.progress};
+    font-size: 3rem;
+
+    &:hover {
+        color: ${colorScheme.radioIconHover};
+    }
 `
 /* Footer */
 export const FooterWrap = styled.div`

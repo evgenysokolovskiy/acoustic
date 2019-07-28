@@ -13,20 +13,23 @@ import {
 export default class Player extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { play: false, icon_play: 'play_arrow' }
+        this.state = { playIcon: 'play_arrow' }
+    }
+
+    componentDidMount() {
+        this.props.getAudio(this.audio)
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // Если аудио воспроизводится из мобильной версии:
-        // Десктопная версия скрыта, управление производится кнопками мобильной версии
-        // Воспроизведение всегда осуществляется из данного модуля
-        if (prevProps.isMobilePlay !== this.props.isMobilePlay) {
-            this.props.isMobilePlay
-                ? this.setState({ play: true, icon_play: 'pause' })
-                : this.setState({ play: false, icon_play: 'play_arrow' })
+        // Воспроизвести аудио
+        this.props.play ? this.audio.play() : this.audio.pause()
+
+        // Сменить иконку воспроизведение / пауза
+        if (prevProps.play !== this.props.play) {
+            this.props.play
+                ? this.setState({ playIcon: 'pause' })
+                : this.setState({ playIcon: 'play_arrow' })
         }
-        // При состоянии play === true воспроизводить
-        this.state.play ? this.audio.play() : this.audio.pause()
 
         // Заливка шкалы progress в зависимости от точки воспроизведения композиции
         this.progress.style.width =
@@ -44,11 +47,9 @@ export default class Player extends React.Component {
         if (!this.audio.duration) this.duration.innerHTML = '0:00' // Чтобы не выводился NAN при переходе между треками
     }
 
-    // 1) Воспроизведение / пауза
+    // 1) Передать родителю событие клика по иконке воспроизведение / пауза
     toggleMusic = () => {
-        this.state.icon_play === 'play_arrow'
-            ? this.setState({ icon_play: 'pause', play: true })
-            : this.setState({ icon_play: 'play_arrow', play: false })
+        this.props.getStatePlay(true)
     }
 
     // 2) Получить текущее время воспроизведения композиции и записать в Store
@@ -72,7 +73,8 @@ export default class Player extends React.Component {
         if (this.props.indexComposition === this.props.album.list.length - 1) {
             this.props.getIndexComposition(0)
             setTimeout(() => {
-                this.setState({ icon_play: 'play_arrow', play: false })
+                this.props.getStatePlay(true)
+                this.setState({ playIcon: 'play_arrow' })
             }, 10)
         }
     }
@@ -90,7 +92,7 @@ export default class Player extends React.Component {
                 />
                 <PlayerWrap>
                     <PlayIconWrap>
-                        <PlayIcon onClick={this.toggleMusic}>{this.state.icon_play}</PlayIcon>
+                        <PlayIcon onClick={this.toggleMusic}>{this.state.playIcon}</PlayIcon>
                     </PlayIconWrap>
                     <ProgressBarWrap>
                         <Scrabber

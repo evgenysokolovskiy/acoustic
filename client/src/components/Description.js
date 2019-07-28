@@ -1,5 +1,11 @@
 import React from 'react'
-import { TestWrapper, AsideIconClose, PosterNameAlbum, PosterArtist } from '../styles/screen1/'
+import {
+    DescriptionWrapper,
+    DescriptionIconClose,
+    DescriptionNameAlbum,
+    DescriptionArtist,
+    DescriptionText
+} from '../styles/screen1/description'
 
 export default class Description extends React.Component {
     componentDidMount() {
@@ -13,16 +19,18 @@ export default class Description extends React.Component {
     render() {
         const { name, author, description } = this.props.album
         return (
-            <TestWrapper
+            <DescriptionWrapper
                 ref={descriptionElem => {
                     this.descriptionElem = descriptionElem
                 }}
             >
-                <AsideIconClose onClick={this.handlePressCloseIcon}>close</AsideIconClose>
-                <PosterNameAlbum style={{ whiteSpace: 'nowrap' }}>{name}</PosterNameAlbum>
-                <PosterArtist style={{ whiteSpace: 'nowrap' }}>{author}</PosterArtist>
-                <p style={{ fontSize: '1.2rem' }}>{description}</p>
-            </TestWrapper>
+                <DescriptionIconClose onClick={this.handlePressCloseIcon}>
+                    close
+                </DescriptionIconClose>
+                <DescriptionNameAlbum style={{ whiteSpace: 'nowrap' }}>{name}</DescriptionNameAlbum>
+                <DescriptionArtist style={{ whiteSpace: 'nowrap' }}>{author}</DescriptionArtist>
+                <DescriptionText>{description}</DescriptionText>
+            </DescriptionWrapper>
         )
     }
 }

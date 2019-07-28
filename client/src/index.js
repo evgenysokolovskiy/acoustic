@@ -14,6 +14,6 @@ ReactDOM.render(
 
 /*
 store.subscribe(() => {
-	console.log(store.getState().media);
+	console.log(store.getState().currentTime);
 })
 */

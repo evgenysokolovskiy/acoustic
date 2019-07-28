@@ -1,3 +1,4 @@
+/*
 const fs = require('fs')
 const zlib = require('zlib')
 const compress = zlib.createGzip()
@@ -6,7 +7,7 @@ module.exports = function(app, data) {
     const { url, dir } = data
     fs.readdir(dir, function(err, albums) {
         albums.forEach(album => {
-            const param = album.charCodeAt(0) // Привести строку(наименование альбома) к числовому представлению
+            const param = album.charCodeAt(0) // Привести строку к числовому представлению
             fs.readdir(`${dir}${album}`, function(err, songs) {
                 const length = songs.length // количество композиций в альбоме
                 let path, folder
@@ -56,3 +57,4 @@ module.exports = function(app, data) {
         })
     }
 }
+*/

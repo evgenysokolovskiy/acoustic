@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { isMobilePlay, getPosterElem } from '../store/actions'
+import { isPlay, getPosterElem } from '../store/actions'
 import PlaylistContainer from './PlaylistContainer'
 import Poster from '../components/Poster'
 import { ContentWrap, HomeIcon } from '../styles/screen2/'
@@ -15,13 +15,12 @@ class PosterContainer extends React.Component {
         elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
 
-    // Передать через props в потомка (Scale) и вернуть значение play (состояние воспроизведения аудио из мобильной версии)
-    getMobilPlay = play => {
-        this.props.isMobilePlay(play)
+    getStatePlay = () => {
+        this.props.isPlay(!this.props.play)
     }
 
     render() {
-        const { indexComposition, currentTime, album, duration } = this.props
+        const { indexComposition, currentTime, album, duration, play } = this.props
         return (
             <ContentWrap
                 ref={posterElem => {
@@ -33,7 +32,8 @@ class PosterContainer extends React.Component {
                     indexComposition={indexComposition}
                     currentTime={currentTime}
                     duration={duration}
-                    getMobilPlay={this.getMobilPlay}
+                    play={play}
+                    getStatePlay={this.getStatePlay}
                 />
                 <PlaylistContainer />
                 <HomeIcon onClick={this.handlePressHomeIcon}>keyboard_arrow_up</HomeIcon>
@@ -48,12 +48,13 @@ const mapStateToProps = state => {
         currentTime: state.currentTime,
         album: state.album,
         duration: state.duration,
+        play: state.play,
         headerElem: state.headerElem
     }
 }
 
 const mapDispatchToProps = {
-    isMobilePlay,
+    isPlay,
     getPosterElem
 }
 
