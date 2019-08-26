@@ -5,6 +5,8 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+  user-select: none; /* Запретить выделение */
+  -webkit-tap-highlight-color: transparent; /* При клике на мобильных устройствах запретить выделение элемента */
 }
 
 body {

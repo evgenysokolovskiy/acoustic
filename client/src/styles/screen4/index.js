@@ -14,7 +14,7 @@ export const RadioboxWrap = styled.div`
     background-color: ${colorScheme.radioboxWrap};
     position: relative;
 
-    @media ${device.mobileL} {
+    @media ${device.mobileS} {
         flex-direction: column;
     }
 `

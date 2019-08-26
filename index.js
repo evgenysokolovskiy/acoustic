@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const path = require('path')
+/*
 const port = process.env.PORT || 5000
 const server = require('http')
     .Server(app)
@@ -7,6 +9,8 @@ const server = require('http')
 const path = require('path')
 const io = require('socket.io')(server)
 const sockets = require('./server/sockets')(io)
+*/
+
 const dataSoundAPI = {
     url: '/api/audio/',
     dir: './data/sound/'

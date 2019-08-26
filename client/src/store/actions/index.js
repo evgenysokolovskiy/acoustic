@@ -100,7 +100,7 @@ export function getRadioboxElem(radioboxElem) {
 // 1) Отправить на сервер имя выбранного альбома
 // 2) В ответ получить с сервера массив с продолжительностью композиций
 export function getMetadataFromServer(album) {
-    const socket = io.connect('http://localhost:5000/')
+    const socket = io.connect('/')
     return dispatch => {
         socket.emit('album', album)
         socket.on('duration', duration => {

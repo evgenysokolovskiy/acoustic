@@ -13,7 +13,7 @@ export const DescriptionWrap = styled.div`
     height: 100vh;
     position: relative;
 
-    @media ${device.mobileL} {
+    @media ${device.mobileS} {
         display: none;
     }
     @media ${device.laptop} {

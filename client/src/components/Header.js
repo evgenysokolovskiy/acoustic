@@ -119,7 +119,7 @@ export default class Header extends React.Component {
                     <DescriptionIcon onClick={this.handlePressDescriptionIcon}>
                         description
                     </DescriptionIcon>
-                    <RadioIcon onClick={this.handlePressRadioIcon}>radio</RadioIcon>
+                    {/*<RadioIcon onClick={this.handlePressRadioIcon}>radio</RadioIcon>*/}
                     <Arrow onClick={this.handlePressArrow}>keyboard_arrow_down</Arrow>
                 </HeaderWrap>
                 <Description

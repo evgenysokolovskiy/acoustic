@@ -12,8 +12,8 @@ const App = () => {
             <HeaderContainer />
             <PosterContainer />
             <PlayerContainer />
-            <RadioboxContainer />
-            <Footer />
+            {/*<RadioboxContainer />*/}
+            {/*<Footer />*/}
         </div>
     )
 }

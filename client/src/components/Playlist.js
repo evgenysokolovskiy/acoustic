@@ -4,7 +4,7 @@ import { PlaylistWrap, PlaylistItem, PlaylistItemPress } from '../styles/screen2
 export default class Playlist extends React.Component {
     constructor(props) {
         super(props)
-        this.host = `http://localhost:5000/api/audio`
+        this.host = `/api/audio`
     }
 
     componentDidUpdate(prevProps, prevState) {
